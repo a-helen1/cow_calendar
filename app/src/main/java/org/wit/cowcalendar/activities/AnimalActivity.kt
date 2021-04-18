@@ -1,4 +1,4 @@
-package org.wit.cowcalender.activities
+package org.wit.cowcalendar.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,11 +6,10 @@ import android.widget.RadioGroup
 import kotlinx.android.synthetic.main.activity_animal.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.jetbrains.anko.internals.AnkoInternals.createAnkoContext
 import org.jetbrains.anko.toast
-import org.wit.cowcalender.R
-import org.wit.cowcalender.main.MainApp
-import org.wit.cowcalender.models.AnimalModel
+import org.wit.cowcalendar.R
+import org.wit.cowcalendar.main.MainApp
+import org.wit.cowcalendar.models.AnimalModel
 
 class AnimalActivity : AppCompatActivity(), AnkoLogger {
 

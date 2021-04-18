@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "org.wit.cowcalender"
+        applicationId "org.wit.cowcalendar"
         minSdkVersion 26
         targetSdkVersion 30
         versionCode 1

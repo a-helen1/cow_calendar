@@ -1,4 +1,4 @@
-package org.wit.cowcalender
+package org.wit.cowcalendar
 
 import org.junit.Test
 

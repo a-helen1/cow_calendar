@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CowCalender</string>
+    <string name="app_name">CowCalendar</string>
     <string name="add_animal">Add Animal</string>
     <string name="cow_number">Animal Number</string>
     <string name="sex_male">Male</string>

@@ -1,9 +1,9 @@
-package org.wit.cowcalender.main
+package org.wit.cowcalendar.main
 
 import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.wit.cowcalender.models.AnimalModel
+import org.wit.cowcalendar.models.AnimalModel
 
 class MainApp : Application(), AnkoLogger {
 

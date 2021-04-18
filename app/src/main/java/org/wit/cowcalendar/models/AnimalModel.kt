@@ -1,4 +1,4 @@
-package org.wit.cowcalender.models
+package org.wit.cowcalendar.models
 
 data class AnimalModel(
     var animalNumber: String  = "",

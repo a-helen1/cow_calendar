@@ -1,4 +1,4 @@
-package org.wit.cowcalender.activities
+package org.wit.cowcalendar.activities
 
 import android.os.Bundle
 import android.view.*
@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_animal_list.*
 import kotlinx.android.synthetic.main.card_animal.view.*
 import org.jetbrains.anko.startActivityForResult
-import org.wit.cowcalender.R
-import org.wit.cowcalender.main.MainApp
-import org.wit.cowcalender.models.AnimalModel
+import org.wit.cowcalendar.R
+import org.wit.cowcalendar.main.MainApp
+import org.wit.cowcalendar.models.AnimalModel
 
 class AnimalListActivity : AppCompatActivity() {
 
