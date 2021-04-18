@@ -14,5 +14,8 @@
     <string name="post_serve">Post Serve</string>
     <string name="ok_to_serv">Ok To Serve</string>
     <string name="treatment_required">Treatment Required</string>
+
     <string name="menu_add_animal">Add</string>
+    <string name="menu_cancel_animal">Cancel</string>
+
 </resources>

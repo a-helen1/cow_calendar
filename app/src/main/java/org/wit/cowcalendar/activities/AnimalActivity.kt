@@ -2,6 +2,8 @@ package org.wit.cowcalendar.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.RadioGroup
 import kotlinx.android.synthetic.main.activity_animal.*
 import org.jetbrains.anko.AnkoLogger
@@ -19,6 +21,9 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_animal)
+    toolbarAdd.title = title
+    setSupportActionBar(toolbarAdd)
+    info("Animal Activity started..")
     app = application as MainApp
 
     val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
@@ -43,5 +48,19 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
         toast("Please enter a cow number")
       }
     }
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    menuInflater.inflate(R.menu.menu_animal, menu)
+    return super.onCreateOptionsMenu(menu)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    when (item?.itemId) {
+      R.id.item_cancel -> {
+        finish()
+      }
+    }
+    return super.onOptionsItemSelected(item)
   }
 }

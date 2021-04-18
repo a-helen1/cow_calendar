@@ -1,16 +1,14 @@
 package org.wit.cowcalendar.activities
 
+import AnimalAdapter
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_animal_list.*
-import kotlinx.android.synthetic.main.card_animal.view.*
 import org.jetbrains.anko.startActivityForResult
 import org.wit.cowcalendar.R
 import org.wit.cowcalendar.main.MainApp
-import org.wit.cowcalendar.models.AnimalModel
 
 class AnimalListActivity : AppCompatActivity() {
 
@@ -42,31 +40,3 @@ class AnimalListActivity : AppCompatActivity() {
   }
 }
 
-class AnimalAdapter constructor(private var animals: List<AnimalModel>):
-    RecyclerView.Adapter<AnimalAdapter.MainHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-      return MainHolder(
-          LayoutInflater.from(parent?.context).inflate(
-              R.layout.card_animal,
-              parent,
-              false
-          )
-      )
-    }
-
-    override fun onBindViewHolder(holder: MainHolder, Position: Int) {
-      val animal = animals[holder.adapterPosition]
-      holder.bind(animal)
-    }
-
-    override fun getItemCount(): Int = animals.size
-
-    class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-      fun bind(animal:AnimalModel){
-        itemView.animalNumber.text = animal.animalNumber
-        itemView.animalSex.text = animal.animalSex
-    }
-  }
-}
