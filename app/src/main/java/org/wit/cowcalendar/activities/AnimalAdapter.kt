@@ -6,8 +6,14 @@ import kotlinx.android.synthetic.main.card_animal.view.*
 import org.wit.cowcalendar.R
 import org.wit.cowcalendar.models.AnimalModel
 
-class AnimalAdapter constructor(private var animals: List<AnimalModel>):
-    RecyclerView.Adapter<AnimalAdapter.MainHolder>() {
+interface AnimalListener {
+    fun onAnimalClick(animal: AnimalModel)
+}
+
+class AnimalAdapter constructor(
+    private var animals: List<AnimalModel>,
+    private val listener: AnimalListener
+    ): RecyclerView.Adapter<AnimalAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -21,16 +27,17 @@ class AnimalAdapter constructor(private var animals: List<AnimalModel>):
 
     override fun onBindViewHolder(holder: MainHolder, Position: Int) {
         val animal = animals[holder.adapterPosition]
-        holder.bind(animal)
+        holder.bind(animal, listener)
     }
 
     override fun getItemCount(): Int = animals.size
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(animal: AnimalModel){
+        fun bind(animal: AnimalModel, listener: AnimalListener){
             itemView.animalNumber.text = animal.animalNumber
             itemView.animalSex.text = animal.animalSex
+            itemView.setOnClickListener { listener.onAnimalClick(animal)}
         }
     }
 }

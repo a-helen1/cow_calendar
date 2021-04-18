@@ -1,16 +1,19 @@
 package org.wit.cowcalendar.activities
 
 import AnimalAdapter
+import AnimalListener
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_animal_list.*
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.cowcalendar.R
 import org.wit.cowcalendar.main.MainApp
+import org.wit.cowcalendar.models.AnimalModel
 
-class AnimalListActivity : AppCompatActivity() {
+class AnimalListActivity : AppCompatActivity(), AnimalListener {
 
   lateinit var app: MainApp
 
@@ -24,7 +27,7 @@ class AnimalListActivity : AppCompatActivity() {
 
     val layoutManager =  LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = AnimalAdapter(app.animals)
+    recyclerView.adapter = AnimalAdapter(app.animals.findAll(), this)
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -37,6 +40,10 @@ class AnimalListActivity : AppCompatActivity() {
       R.id.item_add -> startActivityForResult<AnimalActivity>(0)
     }
     return super.onOptionsItemSelected(item)
+  }
+
+  override fun onAnimalClick(animal: AnimalModel) {
+    startActivityForResult(intentFor<AnimalActivity>().putExtra("animal_edit", animal), 0)
   }
 }
 

@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.RadioGroup
 import kotlinx.android.synthetic.main.activity_animal.*
+import kotlinx.android.synthetic.main.card_animal.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
@@ -26,6 +27,12 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
     info("Animal Activity started..")
     app = application as MainApp
 
+    if (intent.hasExtra("animal_edit")) {
+      animal = intent.extras?.getParcelable<AnimalModel>("animal_edit")!!
+      animalNumber.text =animal.animalNumber
+      animalSex.text = animal.animalSex
+    }
+
     val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
     radioGroup?.setOnCheckedChangeListener { group, checkedId ->
       var animalSex = if (R.id.radioButtonMale == checkedId) "male" else "female"
@@ -37,11 +44,8 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
       animal.animalNumber = cowNo.text.toString()
 
       if (animal.animalNumber.isNotEmpty()) {
-        app.animals.add(animal.copy())
-        info("add button pressed: ${animal.animalNumber}")
-        for (i in app!!.animals.indices) {
-          info("Animal[$i]:${app!!.animals[i]}")
-        }
+        app.animals.create(animal.copy())
+        info("add button pressed: ${animal}")
         setResult(AppCompatActivity.RESULT_OK)
         finish()
       } else {
