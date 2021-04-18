@@ -9,16 +9,18 @@ import org.jetbrains.anko.info
 import org.jetbrains.anko.internals.AnkoInternals.createAnkoContext
 import org.jetbrains.anko.toast
 import org.wit.cowcalender.R
+import org.wit.cowcalender.main.MainApp
 import org.wit.cowcalender.models.AnimalModel
 
 class ActivityAnimal : AppCompatActivity(), AnkoLogger {
 
   var animal = AnimalModel()
-  val animals = ArrayList<AnimalModel>()
+  lateinit var app : MainApp
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_animal)
+    app = application as MainApp
 
     val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
     radioGroup?.setOnCheckedChangeListener { group, checkedId ->
@@ -31,10 +33,10 @@ class ActivityAnimal : AppCompatActivity(), AnkoLogger {
       animal.animalNumber = cowNo.text.toString()
 
             if (animal.animalNumber.isNotEmpty()) {
-        animals.add(animal.copy())
+        app.animals.add(animal.copy())
         info ("add button pressed: ${animal.animalNumber}")
-        for (i in animals.indices) {
-          info("Animal[$i]:${this.animals[i]}")
+        for (i in app!!.animals.indices) {
+          info("Animal[$i]:${app!!.animals[i]}")
         }
       }
       else {
