@@ -12,7 +12,7 @@ import org.wit.cowcalender.R
 import org.wit.cowcalender.main.MainApp
 import org.wit.cowcalender.models.AnimalModel
 
-class ActivityAnimal : AppCompatActivity(), AnkoLogger {
+class AnimalActivity : AppCompatActivity(), AnkoLogger {
 
   var animal = AnimalModel()
   lateinit var app : MainApp
@@ -32,19 +32,17 @@ class ActivityAnimal : AppCompatActivity(), AnkoLogger {
 
       animal.animalNumber = cowNo.text.toString()
 
-            if (animal.animalNumber.isNotEmpty()) {
+      if (animal.animalNumber.isNotEmpty()) {
         app.animals.add(animal.copy())
-        info ("add button pressed: ${animal.animalNumber}")
+        info("add button pressed: ${animal.animalNumber}")
         for (i in app!!.animals.indices) {
           info("Animal[$i]:${app!!.animals[i]}")
         }
-      }
-      else {
+        setResult(AppCompatActivity.RESULT_OK)
+        finish()
+      } else {
         toast("Please enter a cow number")
       }
-
     }
-
   }
-
 }

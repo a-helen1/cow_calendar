@@ -12,8 +12,8 @@ class MainApp : Application(), AnkoLogger {
   override fun onCreate() {
     super.onCreate()
     info("Cow Calendar Started")
-    animals.add(AnimalModel("3221", "female"))
-    animals.add(AnimalModel("456", "female"))
-    animals.add(AnimalModel("875", "male"))
+    //animals.add(AnimalModel("3221", "female"))
+   // animals.add(AnimalModel("456", "female"))
+    //animals.add(AnimalModel("875", "male"))
   }
 }

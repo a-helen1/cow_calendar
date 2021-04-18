@@ -1,16 +1,13 @@
 package org.wit.cowcalender.activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_animal_list.*
 import kotlinx.android.synthetic.main.card_animal.view.*
+import org.jetbrains.anko.startActivityForResult
 import org.wit.cowcalender.R
 import org.wit.cowcalender.main.MainApp
 import org.wit.cowcalender.models.AnimalModel
@@ -24,9 +21,24 @@ class AnimalListActivity : AppCompatActivity() {
     setContentView(R.layout.activity_animal_list)
     app = application as MainApp
 
+    toolbar.title = title
+    setSupportActionBar(toolbar)
+
     val layoutManager =  LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     recyclerView.adapter = AnimalAdapter(app.animals)
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.menu_main, menu)
+    return super .onCreateOptionsMenu(menu)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    when (item?.itemId) {
+      R.id.item_add -> startActivityForResult<AnimalActivity>(0)
+    }
+    return super.onOptionsItemSelected(item)
   }
 }
 
