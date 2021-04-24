@@ -33,10 +33,16 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
       animalSex.text = animal.animalSex
     }
 
-    val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
-    radioGroup?.setOnCheckedChangeListener { group, checkedId ->
-      var animalSex = if (R.id.radioButtonMale == checkedId) "male" else "female"
-      animal.animalSex = animalSex
+    val radioGroup = findViewById<RadioGroup>(R.id.radioGroup) as RadioGroup
+    radioGroup.setOnCheckedChangeListener {group, ID ->
+      when (ID) {
+        R.id.radioButtonMale -> {
+          animal.animalSex = "Male"
+        }
+        R.id.radioButtonFemale -> {
+          animal.animalSex ="Female"
+        }
+      }
     }
 
     btnAddCow.setOnClickListener() {
