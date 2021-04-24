@@ -36,7 +36,11 @@ class AnimalAdapter constructor(
 
         fun bind(animal: AnimalModel, listener: AnimalListener){
             itemView.animalNumber.text = animal.animalNumber
-            itemView.animalSex.text = animal.animalSex
+            if (animal.animalSex ==1 ) {
+                itemView.animalSex.text = "Male"
+            } else {
+                itemView.animalSex.text = "Female"
+            }
             itemView.setOnClickListener { listener.onAnimalClick(animal)}
         }
     }

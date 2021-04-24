@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class AnimalModel(
+    var id: Long = 0,
     var animalNumber: String  = "",
-    var animalSex: String = ""
+    var animalSex: Int = 0
 ): Parcelable

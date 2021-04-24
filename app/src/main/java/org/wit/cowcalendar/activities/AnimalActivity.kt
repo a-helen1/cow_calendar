@@ -26,37 +26,46 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
     setSupportActionBar(toolbarAdd)
     info("Animal Activity started..")
     app = application as MainApp
+    var edit = false
 
     if (intent.hasExtra("animal_edit")) {
+      edit = true
       animal = intent.extras?.getParcelable<AnimalModel>("animal_edit")!!
-      animalNumber.text =animal.animalNumber
-      animalSex.text = animal.animalSex
+      cowNo.setText(animal.animalNumber)
+      if(animal.animalSex == 1)  {
+        radioButtonMale.isChecked = true
+      }else {
+        radioButtonFemale.isChecked = true
+      }
+      btnAddCow.setText(R.string.save_animal)
     }
 
     val radioGroup = findViewById<RadioGroup>(R.id.radioGroup) as RadioGroup
     radioGroup.setOnCheckedChangeListener {group, ID ->
       when (ID) {
         R.id.radioButtonMale -> {
-          animal.animalSex = "Male"
+          animal.animalSex = 1
         }
         R.id.radioButtonFemale -> {
-          animal.animalSex ="Female"
+          animal.animalSex = 2
         }
       }
     }
 
     btnAddCow.setOnClickListener() {
-
       animal.animalNumber = cowNo.text.toString()
-
-      if (animal.animalNumber.isNotEmpty()) {
-        app.animals.create(animal.copy())
+      if (animal.animalNumber.isEmpty()) {
+        toast("Please enter a cow number")
+      }else {
+        if (edit) {
+          app.animals.update(animal.copy())
+        }else {
+          app.animals.create(animal.copy())
+        }
+      }
         info("add button pressed: ${animal}")
         setResult(AppCompatActivity.RESULT_OK)
         finish()
-      } else {
-        toast("Please enter a cow number")
-      }
     }
   }
 
