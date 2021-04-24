@@ -18,5 +18,6 @@
 
     <string name="menu_add_animal">Add</string>
     <string name="menu_cancel_animal">Cancel</string>
+    <string name="menu_delete_animal">Delete</string>
 
 </resources>

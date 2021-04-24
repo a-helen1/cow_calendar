@@ -28,7 +28,7 @@ class AnimalListActivity : AppCompatActivity(), AnimalListener {
 
     val layoutManager =  LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = AnimalAdapter(app.animals.findAll(), this)
+    loadAnimals()
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -47,8 +47,17 @@ class AnimalListActivity : AppCompatActivity(), AnimalListener {
     startActivityForResult(intentFor<AnimalActivity>().putExtra("animal_edit", animal), 0)
   }
 
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+  private fun loadAnimals() {
+    showAnimals(app.animals.findAll())
+  }
+
+  fun showAnimals (animals: List<AnimalModel>) {
+    recyclerView.adapter = AnimalAdapter(animals, this)
     recyclerView.adapter?.notifyDataSetChanged()
+  }
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    loadAnimals()
     super.onActivityResult(requestCode, resultCode, data)
   }
 }
