@@ -49,13 +49,12 @@
 
         <EditText
             android:id="@+id/animalDob"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="306dp"
+            android:layout_height="44dp"
             android:layout_marginTop="16dp"
             android:ems="10"
             android:hint="@string/animal_dob"
             android:inputType="date"
-            app:layout_constraintEnd_toEndOf="@+id/cowNo"
             app:layout_constraintStart_toStartOf="@+id/cowNo"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
@@ -99,6 +98,18 @@
             app:layout_constraintHorizontal_bias="0.464"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/animalDob" />
+
+        <Button
+            android:id="@+id/btnSetDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/btn_set_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/animalDob"
+            app:layout_constraintTop_toTopOf="@+id/animalDob"
+            android:onClick="showDatePickerDialog"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
