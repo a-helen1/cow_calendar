@@ -24,6 +24,7 @@ import org.wit.cowcalendar.R
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -59,17 +60,6 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
       btnAddCow.setText(R.string.save_animal)
     }
 
-    /*
-    btnSetDate.setOnClickListener {
-      val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ _, mYear, mMonth, mDay ->
-        animalDob.setText(""+ mDay +"/"+ mMonth +"/"+ mYear )
-      }, year, month, day)
-      dpd.show()
-    }
-
-     */
-
-
     val radioGroup = findViewById<RadioGroup>(R.id.radioGroup) as RadioGroup
     radioGroup.setOnCheckedChangeListener { group, ID ->
       when (ID) {
@@ -84,6 +74,7 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
 
     btnAddCow.setOnClickListener() {
       animal.animalNumber = cowNo.text.toString()
+      //animal.animalDob =
       if (animal.animalNumber.isEmpty()) {
         toast("Please enter a cow number")
       } else {
@@ -139,13 +130,21 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
   }
 
   override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-    Log.d("Picked Date", "$year-$month-$day")
-    val l = LocalDate.parse("$day-$month-$year", DateTimeFormatter.ofPattern("dd-MM-yyyy"))
 
+    val correctMonth = month + 1 //correct date offset Jan = 0
 
-    var unix = l.atStartOfDay(ZoneId.systemDefault()).toInstant().epochSecond
-    Log.d("Times-tamp", "$unix")
+    val c = Calendar.getInstance()
+    c.set(Calendar.YEAR, year)
+    c.set(Calendar.MONTH, correctMonth)
+    c.set(Calendar.DAY_OF_MONTH, day)
+    return
+/*
+    val pickedDate = DateFormat.getDateInstance(DateFormat.SHORT).format(c.time) // convert to a string
 
+    Log.d("Picked Date", pickedDate)
+    val l = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(pickedDate)
+    Log.d("parsed date", "$l")
+*/
   }
 }
 
