@@ -21,4 +21,12 @@
     <string name="menu_cancel_animal">Cancel</string>
     <string name="menu_delete_animal">Delete</string>
 
+    <string-array name="Events">
+        <item>Calve</item>
+        <item>Post Calve Scan</item>
+        <item>Serve</item>
+        <item>Pregnancy Check</item>
+        <item>Dry Off</item>
+    </string-array>
+
 </resources>

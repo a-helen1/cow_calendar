@@ -112,6 +112,7 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
   fun showDatePickerDialog(v: View) {
     val newFragment = DatePickerFragment()
     newFragment.show(supportFragmentManager, "datePicker")
+
   }
 
 }
@@ -137,14 +138,14 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
     c.set(Calendar.YEAR, year)
     c.set(Calendar.MONTH, correctMonth)
     c.set(Calendar.DAY_OF_MONTH, day)
-    return
-/*
+
     val pickedDate = DateFormat.getDateInstance(DateFormat.SHORT).format(c.time) // convert to a string
 
     Log.d("Picked Date", pickedDate)
     val l = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(pickedDate)
     Log.d("parsed date", "$l")
-*/
+
+
   }
 }
 
