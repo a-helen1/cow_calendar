@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.wit.cowcalender">
+    package="org.wit.cowcalendar">
 
     <application
+        android:name="org.wit.cowcalendar.main.MainApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CowCalender">
-        <activity android:name=".activities.ActivityAnimal">
+        android:theme="@style/Theme.Design.NoActionBar">
+        <activity android:name="org.wit.cowcalendar.activities.AnimalActivity">
+        </activity>
+        <activity android:name="org.wit.cowcalendar.activities.AnimalListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="org.wit.cowcalendar.activities.AnimalEventActivity">
         </activity>
     </application>
 

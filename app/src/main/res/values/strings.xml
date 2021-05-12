@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CowCalender</string>
+    <string name="app_name">CowCalendar</string>
     <string name="add_animal">Add Animal</string>
     <string name="cow_number">Animal Number</string>
     <string name="sex_male">Male</string>
@@ -10,8 +10,23 @@
     <string name="btn_dry_off">Dry Off</string>
     <string name="btn_add_Serve">Add Service</string>
     <string name="btn_add_Scan">Add Scan</string>
+    <string name="btn_set_date">Set Date</string>
     <string name="pre_serve">Pre Serve</string>
     <string name="post_serve">Post Serve</string>
     <string name="ok_to_serv">Ok To Serve</string>
     <string name="treatment_required">Treatment Required</string>
+    <string name="save_animal">Save Animal</string>
+
+    <string name="menu_add_animal">Add</string>
+    <string name="menu_cancel_animal">Cancel</string>
+    <string name="menu_delete_animal">Delete</string>
+
+    <string-array name="Events">
+        <item>Calve</item>
+        <item>Post Calve Scan</item>
+        <item>Serve</item>
+        <item>Pregnancy Check</item>
+        <item>Dry Off</item>
+    </string-array>
+
 </resources>
