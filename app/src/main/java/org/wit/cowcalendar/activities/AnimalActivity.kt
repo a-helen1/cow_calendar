@@ -74,7 +74,7 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
 
     btnAddCow.setOnClickListener() {
       animal.animalNumber = cowNo.text.toString()
-      //animal.animalDob =
+      animal.animalDob = animalDob.text.toString()
       if (animal.animalNumber.isEmpty()) {
         toast("Please enter a cow number")
       } else {
@@ -111,13 +111,14 @@ class AnimalActivity : AppCompatActivity(), AnkoLogger {
 
   fun showDatePickerDialog(v: View) {
     val newFragment = DatePickerFragment()
+    newFragment.setAppObject(app)
     newFragment.show(supportFragmentManager, "datePicker")
-
   }
-
 }
 
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
+
+  lateinit var app: MainApp
 
   override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
     // Use the current date as the default date in the picker
@@ -132,6 +133,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
   override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
 
+
     val correctMonth = month + 1 //correct date offset Jan = 0
 
     val c = Calendar.getInstance()
@@ -144,8 +146,12 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
     Log.d("Picked Date", pickedDate)
     val l = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(pickedDate)
     Log.d("parsed date", "$l")
+    activity!!.findViewById<TextView>(R.id.animalDob).text = pickedDate
 
+  }
 
+  fun setAppObject(appMain: MainApp) {
+    app = appMain
   }
 }
 

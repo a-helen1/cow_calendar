@@ -1,6 +1,7 @@
 package org.wit.cowcalendar.activities
 
 import android.os.Bundle
+import android.text.Selection.setSelection
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_animal.toolbarAdd
 import kotlinx.android.synthetic.main.activity_animal_events.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.jetbrains.anko.intentFor
 import org.wit.cowcalendar.R
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
@@ -32,6 +34,7 @@ class AnimalEventActivity : AppCompatActivity(), AnkoLogger {
 
     animal = intent.extras?.getParcelable<AnimalModel>("animal_event")!!
     animalNo.text = animal.animalNumber
+    animalDobEvent.text = animal.animalDob
     if (animal.animalSex == 1) {
       animalSexTxt.setText(R.string.sex_male)
     }else {
@@ -46,16 +49,20 @@ class AnimalEventActivity : AppCompatActivity(), AnkoLogger {
       spinner.onItemSelectedListener = object :
       AdapterView.OnItemSelectedListener {
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
           x= p2
-          Toast.makeText(applicationContext, p2.toString(), Toast.LENGTH_LONG).show()
-
         }
 
         override fun onNothingSelected(p0: AdapterView<*>?) {
           TODO("Not yet implemented")
         }
       }
+    }
+
+    btnAddEvent.setOnClickListener() {
+      when (x){
+        1-> startActivityForResult(intentFor<AnimalEventActivity>().putExtra("animal_event", animal), 0)
+      }
+
     }
   }
 
