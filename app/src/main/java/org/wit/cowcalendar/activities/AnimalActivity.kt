@@ -133,21 +133,18 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
   override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
 
-
-    val correctMonth = month + 1 //correct date offset Jan = 0
-
     val c = Calendar.getInstance()
     c.set(Calendar.YEAR, year)
-    c.set(Calendar.MONTH, correctMonth)
+    c.set(Calendar.MONTH, month)
     c.set(Calendar.DAY_OF_MONTH, day)
 
     val pickedDate = DateFormat.getDateInstance(DateFormat.SHORT).format(c.time) // convert to a string
 
-    Log.d("Picked Date", pickedDate)
-    val l = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(pickedDate)
-    Log.d("parsed date", "$l")
-    activity!!.findViewById<TextView>(R.id.animalDob).text = pickedDate
+    //Log.d("Picked Date", pickedDate)
+    //val l = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(pickedDate)
+    //Log.d("parsed date", "$l")
 
+    activity!!.findViewById<TextView>(R.id.animalDob).text = pickedDate
   }
 
   fun setAppObject(appMain: MainApp) {

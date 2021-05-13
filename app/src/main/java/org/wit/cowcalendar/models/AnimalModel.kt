@@ -10,3 +10,4 @@ data class AnimalModel(
     var animalSex: Int = 0,
     var animalDob: String = ""
 ): Parcelable
+

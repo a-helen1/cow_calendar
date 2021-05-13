@@ -17,12 +17,14 @@ import org.jetbrains.anko.intentFor
 import org.wit.cowcalendar.R
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
+import org.wit.cowcalendar.models.EventModel
 
 class AnimalEventActivity : AppCompatActivity(), AnkoLogger {
 
   var animal = AnimalModel()
   lateinit var app: MainApp
   var x = 0
+  var event = EventModel()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
