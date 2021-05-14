@@ -47,6 +47,7 @@ class AddServeActivity : AppCompatActivity(), AnkoLogger {
       event.serveNo += 1
       app.events.create(event.copy())
       Log.d("Event", "$event"  )
+      finish()
     }
   }
  }

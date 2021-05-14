@@ -9,7 +9,6 @@ import org.wit.cowcalendar.helpers.exists
 import org.wit.cowcalendar.helpers.read
 import org.wit.cowcalendar.helpers.write
 import java.util.*
-import kotlin.collections.ArrayList
 
 val JSON_EVENTS_FILE = "events.json"
 val gsonEventBuilder = GsonBuilder().setPrettyPrinting().create()
@@ -59,8 +58,8 @@ class EventJSONStore : EventStore, AnkoLogger {
     serialise()
   }
 
-  override fun findById(id: Long): EventModel? {
-    TODO("Not yet implemented")
+  override fun findById(id: Int): EventModel? {
+    return events.find { it.animalId == id }
   }
 
   override fun clear() {
