@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class EventModel(
   var id: Long = 0,
-  var animalId: Long = 0,
+  var animalId: Int = 0,
   var eventType: String = "",
   var eventDate: String = "",
   var sire: String = "",

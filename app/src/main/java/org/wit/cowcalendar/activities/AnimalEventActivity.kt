@@ -1,13 +1,13 @@
 package org.wit.cowcalendar.activities
 
+import android.app.DatePickerDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.text.Selection.setSelection
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.activity_animal.*
 import kotlinx.android.synthetic.main.activity_animal.toolbarAdd
 import kotlinx.android.synthetic.main.activity_animal_events.*
@@ -18,6 +18,8 @@ import org.wit.cowcalendar.R
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
+import java.text.DateFormat
+import java.util.*
 
 class AnimalEventActivity : AppCompatActivity(), AnkoLogger {
 
@@ -61,14 +63,59 @@ class AnimalEventActivity : AppCompatActivity(), AnkoLogger {
     }
 
     btnAddEvent.setOnClickListener() {
+      event.eventDate = eventDate.text.toString()
+      event.eventType = eventSpinner.selectedItem.toString()
+      event.animalId = animal.animalNumber.toInt()
       when (x){
-        1-> startActivityForResult(intentFor<AnimalEventActivity>().putExtra("animal_event", animal), 0)
+        3-> startActivityForResult(intentFor<AddServeActivity>().putExtra("event_info", event ).putExtra("animal", animal), 0)
       }
 
     }
   }
-
+  fun showDatePickerDialog(v: View) {
+    val newFragment = EventDatePickerFragment()
+    newFragment.setAppObject(app)
+    newFragment.show(supportFragmentManager, "datePicker")
+  }
 }
+
+class EventDatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
+
+  lateinit var app: MainApp
+
+  override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    // Use the current date as the default date in the picker
+    val c = Calendar.getInstance()
+    val year = c.get(Calendar.YEAR)
+    val month = c.get(Calendar.MONTH)
+    val day = c.get(Calendar.DAY_OF_MONTH)
+
+    // Create a new instance of DatePickerDialog and return it
+    return DatePickerDialog(activity!!, this, year, month, day)
+  }
+
+  override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
+
+    val c = Calendar.getInstance()
+    c.set(Calendar.YEAR, year)
+    c.set(Calendar.MONTH, month)
+    c.set(Calendar.DAY_OF_MONTH, day)
+
+    val pickedDate = DateFormat.getDateInstance(DateFormat.SHORT).format(c.time) // convert to a string
+
+    //Log.d("Picked Date", pickedDate)
+    //val l = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(pickedDate)
+    //Log.d("parsed date", "$l")
+
+    activity!!.findViewById<TextView>(R.id.eventDate).text = pickedDate
+  }
+
+  fun setAppObject(appMain: MainApp) {
+    app = appMain
+  }
+}
+
+
 
 
 
