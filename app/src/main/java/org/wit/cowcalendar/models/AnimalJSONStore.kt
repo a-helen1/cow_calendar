@@ -46,6 +46,7 @@
             if (foundAnimal != null ) {
                 foundAnimal.animalNumber = animal.animalNumber
                 foundAnimal.animalSex = animal.animalSex
+                foundAnimal.animalDob = animal.animalDob
             }
             serialise()
         }

@@ -22,9 +22,9 @@ import org.wit.cowcalendar.models.EventModel
 class AnimalEventActivity : AppCompatActivity(), AnkoLogger {
 
   var animal = AnimalModel()
+  var event =EventModel()
   lateinit var app: MainApp
   var x = 0
-  var event = EventModel()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -32,7 +32,7 @@ class AnimalEventActivity : AppCompatActivity(), AnkoLogger {
     toolbarAdd.title = title
     setSupportActionBar(toolbarAdd)
     app = application as MainApp
-    val events = resources.getStringArray(R.array.Events)
+    val eventTypeList = resources.getStringArray(R.array.Events)
 
     animal = intent.extras?.getParcelable<AnimalModel>("animal_event")!!
     animalNo.text = animal.animalNumber
@@ -45,7 +45,7 @@ class AnimalEventActivity : AppCompatActivity(), AnkoLogger {
 
     val spinner = findViewById<Spinner>(R.id.eventSpinner)
     if (spinner != null) {
-      val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, events)
+      val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, eventTypeList)
       spinner.adapter = adapter
 
       spinner.onItemSelectedListener = object :
