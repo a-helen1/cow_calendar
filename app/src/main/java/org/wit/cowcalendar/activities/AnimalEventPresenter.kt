@@ -8,17 +8,32 @@ import org.wit.cowcalendar.models.EventModel
 class AnimalEventPresenter (val view: AnimalEventView) {
   var animal = AnimalModel()
   var event = EventModel()
+  val animalEvents = mutableListOf<EventModel>()
   var app : MainApp
 
   init {
     app = view.application as MainApp
     animal = view.intent.extras?.getParcelable<AnimalModel>("animal_event")!!
-    view.showEvents(animal)
+    getEvents()
+    view.showEvents(animal, animalEvents)
   }
 
-  fun getEvents() = app.events.findAll()
+  fun getEvents() {
+    if (animalEvents.isNotEmpty()){
+      animalEvents.clear()
+    }
+    val allEvents = app.events.findAll()
+    for (item in allEvents) {
+      if (item.animalId == animal.animalNumber.toInt()) {
+        animalEvents.add(item)
+      }
+    }
+  }
 
-  fun doAddServeEvent(animalModel: AnimalModel, event: EventModel) {
+  fun doAddServeEvent(eventDate: String, eventType: String) {
+    event.eventDate = eventDate
+    event.eventType = eventType
+    event.animalId = animal.animalNumber.toInt()
     view.startActivityForResult(view.intentFor<AddServeActivity>()
       .putExtra("event_info", event)
       .putExtra("animal", animal), 0)

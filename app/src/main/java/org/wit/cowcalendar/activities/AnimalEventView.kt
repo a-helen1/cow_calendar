@@ -64,17 +64,13 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
     }
 
     btnAddEvent.setOnClickListener() {
-      presenter.event.eventDate = eventDate.text.toString()
-      presenter.event.eventType = eventSpinner.selectedItem.toString()
-      presenter.event.animalId = presenter.animal.animalNumber.toInt()
       when (x){
-        3-> presenter.doAddServeEvent(presenter.animal, presenter.event)
+        3-> presenter.doAddServeEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
       }
-
     }
   }
 
-  fun showEvents (animal: AnimalModel) {
+  fun showEvents (animal: AnimalModel, events: MutableList<EventModel>) {
     animalNo.setText(animal.animalNumber)
     animalDobEvent.setText (animal.animalDob)
     animalId = animal.animalNumber.toInt()
@@ -86,32 +82,12 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
 
     val eventLayoutManager = LinearLayoutManager(this)
     eventRecyclerView.layoutManager = eventLayoutManager
-    eventRecyclerView.adapter = EventAdapter(presenter.getEvents(),this)
+    eventRecyclerView.adapter = EventAdapter(events,this)
     eventRecyclerView.adapter?.notifyDataSetChanged()
 
   }
 
-
-
   override fun onEventClick(event: EventModel) {}
-
-  private fun loadEvents(id: Int) {
-    //showEvents(app.events.findAll())
-    var allEvents = app.events.findAll()
-    var animalEvents = mutableListOf<EventModel>()
-    for (item in allEvents) {
-      if (item.animalId == id) {
-        animalEvents.add(item)
-      }
-    }
-    showEvents(animalEvents)
-
-
-  }
-
-  fun showEvents (events: List<EventModel>) {
-
-  }
 
   fun showDatePickerDialog(v: View) {
     val newFragment = EventDatePickerFragment()
@@ -120,10 +96,9 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    loadEvents(animalId)
+    presenter.getEvents()
     super.onActivityResult(requestCode, resultCode, data)
   }
-
 }
 
 class EventDatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
