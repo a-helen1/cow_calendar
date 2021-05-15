@@ -24,7 +24,7 @@ class AnimalListPresenter (val view: AnimalListView) {
   }
 
   fun doShowAnimalEvents(animal: AnimalModel) {
-    view.startActivityForResult(view.intentFor<AnimalEventActivity>().putExtra("animal_event", animal), 0)
+    view.startActivityForResult(view.intentFor<AnimalEventView>().putExtra("animal_event", animal), 0)
   }
 }
 

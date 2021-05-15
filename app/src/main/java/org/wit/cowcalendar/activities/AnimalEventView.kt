@@ -26,11 +26,11 @@ import java.util.*
 
 var animalId = 0
 
-class AnimalEventActivity : AppCompatActivity(), AnkoLogger, EventListener {
+class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
 
-  lateinit var app: MainApp
-  var animal = AnimalModel()
-  var event =EventModel()
+  lateinit var presenter: AnimalEventPresenter
+  //var animal = AnimalModel()
+  //var event =EventModel()
 
   var x = 0
   //var animalId = 0
@@ -38,26 +38,15 @@ class AnimalEventActivity : AppCompatActivity(), AnkoLogger, EventListener {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_animal_events)
+
     toolbarAdd.title = title
     setSupportActionBar(toolbarAdd)
-    app = application as MainApp
+
+    presenter = AnimalEventPresenter(this)
+
     val eventTypeList = resources.getStringArray(R.array.Events)
-
-    animal = intent.extras?.getParcelable<AnimalModel>("animal_event")!!
-    animalNo.text = animal.animalNumber
-    animalDobEvent.text = animal.animalDob
-    animalId = animal.animalNumber.toInt()
-    if (animal.animalSex == 1) {
-      animalSexTxt.setText(R.string.sex_male)
-    }else {
-      animalSexTxt.setText(R.string.sex_female)
-    }
-
-    val eventLayoutManager = LinearLayoutManager(this)
-    eventRecyclerView.layoutManager = eventLayoutManager
-    loadEvents(animalId)
-
     val spinner = findViewById<Spinner>(R.id.eventSpinner)
+
     if (spinner != null) {
       val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, eventTypeList)
       spinner.adapter = adapter
@@ -75,21 +64,34 @@ class AnimalEventActivity : AppCompatActivity(), AnkoLogger, EventListener {
     }
 
     btnAddEvent.setOnClickListener() {
-      event.eventDate = eventDate.text.toString()
-      event.eventType = eventSpinner.selectedItem.toString()
-      event.animalId = animal.animalNumber.toInt()
+      presenter.event.eventDate = eventDate.text.toString()
+      presenter.event.eventType = eventSpinner.selectedItem.toString()
+      presenter.event.animalId = presenter.animal.animalNumber.toInt()
       when (x){
-        3-> startActivityForResult(intentFor<AddServeActivity>().putExtra("event_info", event ).putExtra("animal", animal), 0)
+        3-> presenter.doAddServeEvent(presenter.animal, presenter.event)
       }
 
     }
   }
 
-  fun showDatePickerDialog(v: View) {
-    val newFragment = EventDatePickerFragment()
-    newFragment.setAppObject(app)
-    newFragment.show(supportFragmentManager, "datePicker")
+  fun showEvents (animal: AnimalModel) {
+    animalNo.setText(animal.animalNumber)
+    animalDobEvent.setText (animal.animalDob)
+    animalId = animal.animalNumber.toInt()
+    if (animal.animalSex == 1) {
+      animalSexTxt.setText(R.string.sex_male)
+    }else {
+      animalSexTxt.setText(R.string.sex_female)
+    }
+
+    val eventLayoutManager = LinearLayoutManager(this)
+    eventRecyclerView.layoutManager = eventLayoutManager
+    eventRecyclerView.adapter = EventAdapter(presenter.getEvents(),this)
+    eventRecyclerView.adapter?.notifyDataSetChanged()
+
   }
+
+
 
   override fun onEventClick(event: EventModel) {}
 
@@ -108,8 +110,13 @@ class AnimalEventActivity : AppCompatActivity(), AnkoLogger, EventListener {
   }
 
   fun showEvents (events: List<EventModel>) {
-    eventRecyclerView.adapter = EventAdapter(events,this)
-    eventRecyclerView.adapter?.notifyDataSetChanged()
+
+  }
+
+  fun showDatePickerDialog(v: View) {
+    val newFragment = EventDatePickerFragment()
+    newFragment.setAppObject(presenter.app)
+    newFragment.show(supportFragmentManager, "datePicker")
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
