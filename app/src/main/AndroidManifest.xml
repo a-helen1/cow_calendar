@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Design.NoActionBar">
         <activity android:name="org.wit.cowcalendar.activities.AnimalView">
         </activity>
-        <activity android:name="org.wit.cowcalendar.activities.AnimalListView">
+        <activity android:name="org.wit.cowcalendar.views.animalList.AnimalListView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,7 +20,7 @@
         </activity>
         <activity android:name="org.wit.cowcalendar.activities.AnimalEventView">
         </activity>
-        <activity android:name="org.wit.cowcalendar.activities.AddServeView">
+        <activity android:name="org.wit.cowcalendar.views.addServe.AddServeView">
         </activity>
     </application>
 

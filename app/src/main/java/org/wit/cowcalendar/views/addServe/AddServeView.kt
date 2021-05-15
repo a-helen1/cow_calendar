@@ -1,22 +1,17 @@
-package org.wit.cowcalendar.activities
+package org.wit.cowcalendar.views.addServe
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import android.view.ActionMode
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_add_serve.*
 import kotlinx.android.synthetic.main.activity_add_serve.animalDobEvent
 import kotlinx.android.synthetic.main.activity_add_serve.animalNo
 import kotlinx.android.synthetic.main.activity_add_serve.animalSexTxt
-import kotlinx.android.synthetic.main.activity_animal.*
 import kotlinx.android.synthetic.main.activity_animal.toolbarAdd
-import kotlinx.android.synthetic.main.activity_animal_events.*
 import org.jetbrains.anko.AnkoLogger
 import org.wit.cowcalendar.R
-import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
+import org.wit.cowcalendar.views.addServe.AddServePresenter
 
 class AddServeView : AppCompatActivity(), AnkoLogger {
 

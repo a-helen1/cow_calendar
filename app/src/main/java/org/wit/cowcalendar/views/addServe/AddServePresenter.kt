@@ -1,4 +1,4 @@
-package org.wit.cowcalendar.activities
+package org.wit.cowcalendar.views.addServe
 
 import android.util.Log
 import org.wit.cowcalendar.main.MainApp

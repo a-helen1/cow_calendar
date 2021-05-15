@@ -1,6 +1,8 @@
-package org.wit.cowcalendar.activities
+package org.wit.cowcalendar.views.animalEvent
 
 import org.jetbrains.anko.intentFor
+import org.wit.cowcalendar.views.addServe.AddServeView
+import org.wit.cowcalendar.activities.AnimalEventView
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel

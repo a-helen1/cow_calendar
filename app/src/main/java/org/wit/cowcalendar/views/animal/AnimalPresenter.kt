@@ -1,5 +1,6 @@
-package org.wit.cowcalendar.activities
+package org.wit.cowcalendar.views.animal
 
+import org.wit.cowcalendar.activities.AnimalView
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 
