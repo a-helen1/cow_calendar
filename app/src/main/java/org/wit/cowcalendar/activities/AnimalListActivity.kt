@@ -38,7 +38,8 @@ class AnimalListActivity : AppCompatActivity(), AnimalListener {
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item?.itemId) {
-      R.id.item_add -> startActivityForResult<AnimalActivity>(0)
+      R.id.item_add -> startActivityForResult<AnimalView
+          >(0)
     }
     return super.onOptionsItemSelected(item)
   }
