@@ -7,10 +7,15 @@
     <string name="animal_dob">Date of Birth</string>
     <string name="sire">Sire</string>
     <string name="date">Date</string>
+    <string name="animal_sex">Animal Sex</string>
+    <string name="event_date">Event Date</string>
+
     <string name="btn_dry_off">Dry Off</string>
     <string name="btn_add_Serve">Add Service</string>
     <string name="btn_add_Scan">Add Scan</string>
     <string name="btn_set_date">Set Date</string>
+    <string name="btn_add_event">Add Event</string>
+
     <string name="pre_serve">Pre Serve</string>
     <string name="post_serve">Post Serve</string>
     <string name="ok_to_serv">Ok To Serve</string>
@@ -22,6 +27,7 @@
     <string name="menu_delete_animal">Delete</string>
 
     <string-array name="Events">
+        <item>Select event</item>
         <item>Calve</item>
         <item>Post Calve Scan</item>
         <item>Serve</item>
