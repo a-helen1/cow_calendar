@@ -34,7 +34,7 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     event.eventDate = eventDate
     event.eventType = eventType
     event.animalId = animal.animalNumber.toInt()
-    view.startActivityForResult(view.intentFor<AddServeActivity>()
+    view.startActivityForResult(view.intentFor<AddServeView>()
       .putExtra("event_info", event)
       .putExtra("animal", animal), 0)
   }

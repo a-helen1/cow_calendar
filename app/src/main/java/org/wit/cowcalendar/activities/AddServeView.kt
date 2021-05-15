@@ -18,21 +18,26 @@ import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
 
-class AddServeActivity : AppCompatActivity(), AnkoLogger {
+class AddServeView : AppCompatActivity(), AnkoLogger {
 
+  lateinit var presenter: AddServePresenter
   var animal = AnimalModel()
   var event = EventModel()
-  lateinit var app: MainApp
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_add_serve)
     toolbarAdd.title = title
     setSupportActionBar(toolbarAdd)
-    app = application as MainApp
 
-    event = intent.extras?.getParcelable<EventModel>("event_info")!!
-    animal = intent.extras?.getParcelable<AnimalModel>("animal")!!
+    presenter = AddServePresenter(this)
+
+    btnAddServe.setOnClickListener() {
+      presenter.doAddServe(sire.text.toString())
+    }
+  }
+
+  fun showEvents(animal: AnimalModel, event: EventModel){
     animalNo.text = animal.animalNumber
     animalDobEvent.text = animal.animalDob
     addEventDate.text = event.eventDate
@@ -40,14 +45,6 @@ class AddServeActivity : AppCompatActivity(), AnkoLogger {
       animalSexTxt.setText(R.string.sex_male)
     }else {
       animalSexTxt.setText(R.string.sex_female)
-    }
-
-    btnAddServe.setOnClickListener() {
-      event.sire = sire.text.toString()
-      event.serveNo += 1
-      app.events.create(event.copy())
-      Log.d("Event", "$event"  )
-      finish()
     }
   }
  }

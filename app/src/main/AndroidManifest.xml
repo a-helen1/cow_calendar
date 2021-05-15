@@ -20,7 +20,7 @@
         </activity>
         <activity android:name="org.wit.cowcalendar.activities.AnimalEventView">
         </activity>
-        <activity android:name="org.wit.cowcalendar.activities.AddServeActivity">
+        <activity android:name="org.wit.cowcalendar.activities.AddServeView">
         </activity>
     </application>
 
