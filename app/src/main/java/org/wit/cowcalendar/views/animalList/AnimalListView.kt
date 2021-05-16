@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_animal_list.*
 import org.wit.cowcalendar.R
 import org.wit.cowcalendar.models.AnimalModel
+import org.wit.cowcalendar.views.BaseView
 
-class AnimalListView : AppCompatActivity(), AnimalListener {
+class AnimalListView : BaseView(), AnimalListener {
 
   lateinit var presenter: AnimalListPresenter
 
@@ -37,6 +38,7 @@ class AnimalListView : AppCompatActivity(), AnimalListener {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item?.itemId) {
       R.id.item_add -> presenter.doAddAnimal()
+      R.id.item_logout -> presenter.doLogout()
     }
     return super.onOptionsItemSelected(item)
   }

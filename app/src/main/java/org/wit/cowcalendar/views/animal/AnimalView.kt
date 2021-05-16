@@ -18,11 +18,12 @@ import org.jetbrains.anko.toast
 import org.wit.cowcalendar.R
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
+import org.wit.cowcalendar.views.BaseView
 import org.wit.cowcalendar.views.animal.AnimalPresenter
 import java.text.DateFormat
 import java.util.*
 
-class AnimalView : AppCompatActivity(), AnkoLogger {
+class AnimalView : BaseView(), AnkoLogger {
 
   lateinit var presenter: AnimalPresenter
   var animal = AnimalModel()
@@ -60,7 +61,7 @@ class AnimalView : AppCompatActivity(), AnkoLogger {
     }
   }
 
-  fun showAnimal(animal: AnimalModel) {
+  override fun showAnimal(animal: AnimalModel) {
     cowNo.setText(animal.animalNumber)
     animalDob.setText(animal.animalDob)
     if (animal.animalSex == 1) {

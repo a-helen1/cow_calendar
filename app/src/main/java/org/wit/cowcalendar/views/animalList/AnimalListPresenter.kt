@@ -6,27 +6,28 @@ import org.wit.cowcalendar.activities.AnimalEventView
 import org.wit.cowcalendar.activities.AnimalView
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
+import org.wit.cowcalendar.views.BasePresenter
+import org.wit.cowcalendar.views.BaseView
+import org.wit.cowcalendar.views.VIEW
 
-class AnimalListPresenter (val view: AnimalListView) {
-
-  var app : MainApp
-
-  init {
-    app = view.application as MainApp
-  }
+class AnimalListPresenter (view: BaseView) : BasePresenter(view) {
 
   fun getAnimals() = app.animals.findAll()
 
   fun doAddAnimal() {
-    view.startActivityForResult<AnimalView>(0)
+    view?.navigateTo(VIEW.ANIMAL, 0)
   }
 
   fun doEditAnimal(animal: AnimalModel) {
-    view.startActivityForResult(view.intentFor<AnimalView>().putExtra("animal_edit", animal), 0)
+    view?.navigateTo(VIEW.ANIMAL, 0, "animal_edit", animal)
   }
 
   fun doShowAnimalEvents(animal: AnimalModel) {
-    view.startActivityForResult(view.intentFor<AnimalEventView>().putExtra("animal_event", animal), 0)
+    view?.navigateTo(VIEW.EVENT, 0, "animal_event", animal)
+  }
+
+  fun doLogout(){
+    view?.navigateTo(VIEW.LOGIN)
   }
 }
 

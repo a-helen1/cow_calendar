@@ -1,12 +1,12 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-android-extensions'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
+//apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion '29.0.2'
 
     defaultConfig {
         applicationId "org.wit.cowcalendar"
@@ -32,6 +32,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
+        //dataBinding = true
         viewBinding true
     }
 }

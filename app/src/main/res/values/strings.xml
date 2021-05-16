@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">CowCalendar</string>
+    <string name="title_login_activity">Signup/Login to CowCalendar</string>
     <string name="add_animal">Add Animal</string>
     <string name="cow_number">Animal Number</string>
     <string name="sex_male">Male</string>
@@ -25,6 +26,7 @@
     <string name="menu_add_animal">Add</string>
     <string name="menu_cancel_animal">Cancel</string>
     <string name="menu_delete_animal">Delete</string>
+    <string name="menu_logout">Logout</string>
 
     <string-array name="Events">
         <item>Select event</item>
