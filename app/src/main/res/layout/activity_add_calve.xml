@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.addServe.AddServeView">
+    tools:context=".views.addCalve.AddCalveView">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -62,7 +62,7 @@
             app:layout_constraintTop_toTopOf="@+id/animalSexTxt" />
 
         <TextView
-            android:id="@+id/animalSexTxt"
+            android:id="@+id/animalSexTxt1"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_marginStart="8dp"
@@ -78,37 +78,50 @@
             android:layout_width="156dp"
             android:layout_height="43dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:ems="10"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:hint="@string/event_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/sire"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/animalSexTxt" />
 
-        <EditText
-            android:id="@+id/sire"
-            android:layout_width="0dp"
-            android:layout_height="43dp"
-            android:layout_marginEnd="8dp"
-            android:hint="@string/sire"
-            app:layout_constraintEnd_toStartOf="@+id/addEventDate"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/addEventDate" />
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/addEventDate">
+
+            <RadioButton
+                android:id="@+id/radioButtonMale"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/sex_male"
+                android:textAlignment="gravity" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFemale"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/sex_female"
+                android:textAlignment="gravity" />
+
+        </RadioGroup>
 
         <Button
-            android:id="@+id/btnAddServe"
+            android:id="@+id/btnAddCalve"
             android:layout_width="144dp"
             android:layout_height="49dp"
             android:layout_marginTop="8dp"
-            android:text="@string/btn_add_Serve"
+            android:text="@string/btn_add_calve"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addEventDate" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -16,6 +16,7 @@
     <string name="btn_add_Scan">Add Scan</string>
     <string name="btn_set_date">Set Date</string>
     <string name="btn_add_event">Add Event</string>
+    <string name="btn_add_calve">Add Calve</string>
 
     <string name="pre_serve">Pre Serve</string>
     <string name="post_serve">Post Serve</string>

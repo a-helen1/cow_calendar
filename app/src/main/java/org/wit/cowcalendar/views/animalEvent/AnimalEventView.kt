@@ -61,7 +61,8 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
 
     btnAddEvent.setOnClickListener() {
       when (x){
-        3-> presenter.doAddServeEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
+        1 -> presenter.doAddCalveEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
+        3 -> presenter.doAddServeEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
       }
     }
   }

@@ -1,11 +1,10 @@
-package org.wit.cowcalendar.views.addServe
+package org.wit.cowcalendar.views.addCalve
 
-import android.util.Log
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
 
-class AddServePresenter (val view: AddServeView) {
+class AddCalvePresenter (val view: AddCalveView) {
   var animal = AnimalModel()
   var event = EventModel()
   var app: MainApp
@@ -17,9 +16,9 @@ class AddServePresenter (val view: AddServeView) {
     view.showEvents(animal, event)
   }
 
-  fun doAddServe(sire: String) {
-    event.sire = sire
-    event.serveNo += 1
+  fun doAddCalve(calveSex: Int) {
+    event.calveDate = event.eventDate
+    event.calveSex = calveSex
     app.events.create(event)
     view.finish()
   }
