@@ -7,6 +7,8 @@ import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
 import org.wit.cowcalendar.views.addCalve.AddCalveView
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AnimalEventPresenter (val view: AnimalEventView) {
   var animal = AnimalModel()
@@ -31,6 +33,7 @@ class AnimalEventPresenter (val view: AnimalEventView) {
         animalEvents.add(item)
       }
     }
+    animalEvents.sortWith(compareByDescending { SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH).parse(it.eventDate) })
   }
 
   fun doAddServeEvent(eventDate: String, eventType: String) {
