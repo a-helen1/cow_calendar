@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.cowcalendar.activities.AnimalView">
+    tools:context=".views.addCalve.AddCalveView">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -29,51 +29,70 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".activities.AnimalActivity">
 
-        <EditText
-            android:id="@+id/cowNo"
+        <TextView
+            android:id="@+id/animalNo"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:hint="@string/cow_number"
-            android:inputType="number"
-            android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/animalSexTxt"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/animalDob"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/animalDobEvent"
+            android:layout_width="0dp"
             android:layout_height="44dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="@string/animal_dob"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/animalSexTxt"
+            app:layout_constraintTop_toTopOf="@+id/animalSexTxt" />
+
+        <TextView
+            android:id="@+id/animalSexTxt1"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/animal_sex"
+            app:layout_constraintEnd_toStartOf="@+id/animalDobEvent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/animalNo"
+            app:layout_constraintTop_toTopOf="@+id/animalNo" />
+
+        <TextView
+            android:id="@+id/addEventDate"
+            android:layout_width="156dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:hint="@string/animal_dob"
-            android:inputType="date"
-            android:onClick="showDatePickerDialog"
-            app:layout_constraintEnd_toEndOf="@+id/radioGroup"
-            app:layout_constraintStart_toStartOf="@+id/cowNo"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
+            android:hint="@string/event_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animalSexTxt" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/cowNo"
-            app:layout_constraintStart_toStartOf="@+id/cowNo"
-            app:layout_constraintTop_toBottomOf="@+id/cowNo">
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/addEventDate">
 
             <RadioButton
                 android:id="@+id/radioButtonMale"
@@ -94,15 +113,15 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/btnAddCow"
+            android:id="@+id/btnAddCalve"
             android:layout_width="144dp"
             android:layout_height="49dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/add_animal"
+            android:layout_marginTop="8dp"
+            android:text="@string/btn_add_calve"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.464"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/animalDob" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

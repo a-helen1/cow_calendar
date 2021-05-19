@@ -1,4 +1,4 @@
-package org.wit.cowcalendar.activities
+package org.wit.cowcalendar.views.animalList
 
 import AnimalAdapter
 import AnimalListener
@@ -8,27 +8,26 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_animal_list.*
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivityForResult
 import org.wit.cowcalendar.R
-import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
+import org.wit.cowcalendar.views.BaseView
 
-class AnimalListActivity : AppCompatActivity(), AnimalListener {
+class AnimalListView : BaseView(), AnimalListener {
 
-  lateinit var app: MainApp
+  lateinit var presenter: AnimalListPresenter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_animal_list)
-    app = application as MainApp
 
     toolbar.title = title
     setSupportActionBar(toolbar)
 
+    presenter = AnimalListPresenter(this)
     val layoutManager =  LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
-    loadAnimals()
+    recyclerView.adapter = AnimalAdapter(presenter.getAnimals(), this)
+    recyclerView.adapter?.notifyDataSetChanged()
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -38,27 +37,20 @@ class AnimalListActivity : AppCompatActivity(), AnimalListener {
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item?.itemId) {
-      R.id.item_add -> startActivityForResult<AnimalActivity>(0)
+      R.id.item_add -> presenter.doAddAnimal()
+      R.id.item_logout -> presenter.doLogout()
     }
     return super.onOptionsItemSelected(item)
   }
 
   override fun onAnimalClick(animal: AnimalModel) {
+    presenter.doShowAnimalEvents(animal)
     //startActivityForResult(intentFor<AnimalActivity>().putExtra("animal_edit", animal), 0)
-    startActivityForResult(intentFor<AnimalEventActivity>().putExtra("animal_event", animal), 0)
-  }
-
-  private fun loadAnimals() {
-    showAnimals(app.animals.findAll())
-  }
-
-  fun showAnimals (animals: List<AnimalModel>) {
-    recyclerView.adapter = AnimalAdapter(animals, this)
-    recyclerView.adapter?.notifyDataSetChanged()
+    //startActivityForResult(intentFor<AnimalEventActivity>().putExtra("animal_event", animal), 0)
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    loadAnimals()
+    recyclerView.adapter?.notifyDataSetChanged()
     super.onActivityResult(requestCode, resultCode, data)
   }
 }
