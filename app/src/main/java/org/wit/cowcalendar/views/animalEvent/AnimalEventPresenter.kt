@@ -30,18 +30,19 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     }
     val allEvents = app.events.findAll()
     for (item in allEvents) {
-      if (item.animalId == animal.animalNumber.toInt()) {
+      if (item.animalId == animal.animalNumber) {
         animalEvents.add(item)
       }
     }
     animalEvents.sortWith(compareByDescending { SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH).parse(it.eventDate) })
-
   }
 
   fun doAddServeEvent(eventDate: String, eventType: String) {
+
     event.eventDate = eventDate
     event.eventType = eventType
-    event.animalId = animal.animalNumber.toInt()
+    event.animalId = animal.animalNumber
+    //setLastEvent(eventType)
     view.startActivityForResult(view.intentFor<AddServeView>()
       .putExtra("event_info", event)
       .putExtra("animal", animal), 0)
@@ -50,12 +51,25 @@ class AnimalEventPresenter (val view: AnimalEventView) {
   fun doAddCalveEvent(eventDate: String, eventType: String){
     event.eventDate = eventDate
     event.eventType = eventType
-    event.animalId = animal.animalNumber.toInt()
+    event.animalId = animal.animalNumber
+    //setLastEvent(eventType)
     view.startActivityForResult(view.intentFor<AddCalveView>()
       .putExtra("event_info", event)
       .putExtra("animal", animal), 0)
 
   }
-
+/*
+  private fun setLastEvent(eventType: String) {
+    if( animal.lastEventType == ""){
+      animal.lastEventType = eventType
+      Log.d("lastEventType", animal.lastEventType)
+      app.animals.update(animal)
+    }else {
+      animal.lastEventType = animalEvents[0].eventType
+      Log.d("lastEventType", animal.lastEventType)
+    }
+    app.animals.update(animal)
+  }
+*/
 
 }

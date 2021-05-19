@@ -12,7 +12,7 @@ interface AnimalListener {
 
 class AnimalAdapter constructor(
     private var animals: List<AnimalModel>,
-    private val listener: AnimalListener
+    private val listener: AnimalListener,
     ): RecyclerView.Adapter<AnimalAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -35,7 +35,7 @@ class AnimalAdapter constructor(
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(animal: AnimalModel, listener: AnimalListener){
-            itemView.animalNumber.text = animal.animalNumber
+            itemView.animalNumber.text = animal.animalNumber.toString()
             if (animal.animalSex ==1 ) {
                 itemView.animalSex.text = "Male"
             } else {

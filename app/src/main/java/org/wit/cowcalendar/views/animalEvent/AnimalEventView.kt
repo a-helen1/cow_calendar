@@ -11,7 +11,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_animal.toolbarAdd
 import kotlinx.android.synthetic.main.activity_animal_events.*
+import kotlinx.android.synthetic.main.activity_animal_list.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.toast
 import org.wit.cowcalendar.R
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
@@ -60,17 +62,22 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
     }
 
     btnAddEvent.setOnClickListener() {
-      when (x){
-        1 -> presenter.doAddCalveEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
-        3 -> presenter.doAddServeEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
+      if (eventDate.text.isEmpty()) {
+        toast("Please Enter an Event Date")
+      }else {
+        when (x){
+          0 -> toast("Please Select an Event")
+          1 -> presenter.doAddCalveEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
+          3 -> presenter.doAddServeEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
+        }
       }
     }
   }
 
   fun showEvents (animal: AnimalModel, events: MutableList<EventModel>) {
-    animalNo.setText(animal.animalNumber)
+    animalNo.setText(animal.animalNumber.toString())
     animalDobEvent.setText (animal.animalDob)
-    animalId = animal.animalNumber.toInt()
+    animalId = animal.animalNumber
     if (animal.animalSex == 1) {
       animalSexTxt.setText(R.string.sex_male)
     }else {

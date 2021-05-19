@@ -15,6 +15,7 @@ import org.wit.cowcalendar.views.BaseView
 class AnimalListView : BaseView(), AnimalListener {
 
   lateinit var presenter: AnimalListPresenter
+  var animalList = listOf<AnimalModel>()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -24,6 +25,7 @@ class AnimalListView : BaseView(), AnimalListener {
     setSupportActionBar(toolbar)
 
     presenter = AnimalListPresenter(this)
+
     val layoutManager =  LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     recyclerView.adapter = AnimalAdapter(presenter.getAnimals(), this)

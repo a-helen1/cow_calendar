@@ -33,7 +33,7 @@ class AddServeView : AppCompatActivity(), AnkoLogger {
   }
 
   fun showEvents(animal: AnimalModel, event: EventModel){
-    animalNo.text = animal.animalNumber
+    animalNo.text = animal.animalNumber.toString()
     animalDobEvent.text = animal.animalDob
     addEventDate.text = event.eventDate
     if (animal.animalSex == 1) {
