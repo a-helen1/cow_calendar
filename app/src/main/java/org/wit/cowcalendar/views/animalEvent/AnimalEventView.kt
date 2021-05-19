@@ -94,6 +94,7 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     presenter.getEvents()
+    showEvents(presenter.animal, presenter.animalEvents)
     super.onActivityResult(requestCode, resultCode, data)
   }
 }

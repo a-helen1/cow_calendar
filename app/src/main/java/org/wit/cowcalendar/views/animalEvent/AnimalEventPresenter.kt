@@ -1,5 +1,6 @@
 package org.wit.cowcalendar.views.animalEvent
 
+import android.util.Log
 import org.jetbrains.anko.intentFor
 import org.wit.cowcalendar.views.addServe.AddServeView
 import org.wit.cowcalendar.activities.AnimalEventView
@@ -34,6 +35,7 @@ class AnimalEventPresenter (val view: AnimalEventView) {
       }
     }
     animalEvents.sortWith(compareByDescending { SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH).parse(it.eventDate) })
+
   }
 
   fun doAddServeEvent(eventDate: String, eventType: String) {
@@ -54,4 +56,6 @@ class AnimalEventPresenter (val view: AnimalEventView) {
       .putExtra("animal", animal), 0)
 
   }
+
+
 }
