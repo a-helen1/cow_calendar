@@ -12,5 +12,6 @@ data class EventModel(
   var sire: String = "",
   var serveNo: Int = 0,
   var calveDate: String = "",
-  var calveSex: Int = 0
+  var calveSex: Int = 0,
+  var dryOffDate: String = ""
 ): Parcelable

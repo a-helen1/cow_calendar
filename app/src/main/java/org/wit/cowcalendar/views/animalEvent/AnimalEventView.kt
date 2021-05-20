@@ -53,6 +53,11 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
       AdapterView.OnItemSelectedListener {
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
           x= p2
+          if (x == 4) {
+            btnAddEvent.setText(R.string.btn_add_dryoff)
+          }else {
+            btnAddEvent.setText(R.string.btn_add_event)
+          }
         }
 
         override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -69,6 +74,7 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
           0 -> toast("Please Select an Event")
           1 -> presenter.doAddCalveEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
           3 -> presenter.doAddServeEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
+          4 -> presenter.doAddDryOffEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
         }
       }
     }

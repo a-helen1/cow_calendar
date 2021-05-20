@@ -58,18 +58,17 @@ class AnimalEventPresenter (val view: AnimalEventView) {
       .putExtra("animal", animal), 0)
 
   }
-/*
-  private fun setLastEvent(eventType: String) {
-    if( animal.lastEventType == ""){
-      animal.lastEventType = eventType
-      Log.d("lastEventType", animal.lastEventType)
-      app.animals.update(animal)
-    }else {
-      animal.lastEventType = animalEvents[0].eventType
-      Log.d("lastEventType", animal.lastEventType)
-    }
-    app.animals.update(animal)
-  }
-*/
 
+  fun doAddDryOffEvent(eventDate: String, eventType: String){
+    event.eventDate = eventDate
+    event.eventType = eventType
+    event.animalId = animal.animalNumber
+    event.dryOffDate = eventDate
+    animal.lastEventType = event.eventType
+    app.animals.update(animal)
+    app.events.create(event)
+    Log.d("dryOff", event.toString())
+    getEvents()
+    view.showEvents(animal, animalEvents)
+  }
 }

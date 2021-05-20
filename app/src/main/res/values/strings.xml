@@ -17,6 +17,7 @@
     <string name="btn_set_date">Set Date</string>
     <string name="btn_add_event">Add Event</string>
     <string name="btn_add_calve">Add Calve</string>
+    <string name="btn_add_dryoff">Add Dry Off</string>
 
     <string name="pre_serve">Pre Serve</string>
     <string name="post_serve">Post Serve</string>
@@ -32,9 +33,8 @@
     <string-array name="Events">
         <item>Select event</item>
         <item>Calve</item>
-        <item>Post Calve Scan</item>
+        <item>Scan</item>
         <item>Serve</item>
-        <item>Pregnancy Check</item>
         <item>Dry Off</item>
     </string-array>
 
