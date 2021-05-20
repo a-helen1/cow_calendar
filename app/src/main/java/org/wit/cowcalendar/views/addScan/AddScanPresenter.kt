@@ -1,11 +1,12 @@
-package org.wit.cowcalendar.views.addCalve
+package org.wit.cowcalendar.views.addScan
 
 import android.util.Log
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
 
-class AddCalvePresenter (val view: AddCalveView) {
+class AddScanPresenter (val view: AddScanView) {
+
   var animal = AnimalModel()
   var event = EventModel()
   var app: MainApp
@@ -17,13 +18,18 @@ class AddCalvePresenter (val view: AddCalveView) {
     view.showEvents(animal, event)
   }
 
-  fun doAddCalve(calveSex: Int) {
-    event.calveDate = event.eventDate
-    event.calveSex = calveSex
-    animal.lastEventType = event.eventType
-    animal.isPregnant = false
+  fun doAddScan(eventType: String, okToServe: Boolean, treatmentRequired: Boolean, isPregnant: Boolean) {
+    animal.lastEventType = eventType
+    event.eventType = eventType
+    animal.isPregnant = isPregnant
+    event.treatmentRequired = treatmentRequired
+    event.okToServe = okToServe
+    animal.okToServe = okToServe
+    animal.treatmentRequired = treatmentRequired
     app.animals.update(animal)
     app.events.create(event)
     view.finish()
   }
+
 }
+

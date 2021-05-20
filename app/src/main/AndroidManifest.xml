@@ -37,6 +37,9 @@
         <activity android:name="org.wit.cowcalendar.views.addCalve.AddCalveView">
         </activity>
 
+        <activity android:name="org.wit.cowcalendar.views.addScan.AddScanView">
+        </activity>
+
     </application>
 
 </manifest>

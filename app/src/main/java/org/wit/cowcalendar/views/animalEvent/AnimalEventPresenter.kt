@@ -8,6 +8,7 @@ import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
 import org.wit.cowcalendar.views.addCalve.AddCalveView
+import org.wit.cowcalendar.views.addScan.AddScanView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -42,7 +43,6 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     event.eventDate = eventDate
     event.eventType = eventType
     event.animalId = animal.animalNumber
-    //setLastEvent(eventType)
     view.startActivityForResult(view.intentFor<AddServeView>()
       .putExtra("event_info", event)
       .putExtra("animal", animal), 0)
@@ -52,7 +52,6 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     event.eventDate = eventDate
     event.eventType = eventType
     event.animalId = animal.animalNumber
-    //setLastEvent(eventType)
     view.startActivityForResult(view.intentFor<AddCalveView>()
       .putExtra("event_info", event)
       .putExtra("animal", animal), 0)
@@ -67,8 +66,17 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     animal.lastEventType = event.eventType
     app.animals.update(animal)
     app.events.create(event)
-    Log.d("dryOff", event.toString())
     getEvents()
     view.showEvents(animal, animalEvents)
+  }
+
+  fun doAddScanEvent (eventDate: String, eventType: String) {
+    event.eventDate = eventDate
+    event.eventType = eventType
+    event.animalId = animal.animalNumber
+    view.startActivityForResult(view.intentFor<AddScanView>()
+      .putExtra("event_info", event)
+      .putExtra("animal", animal), 0)
+
   }
 }

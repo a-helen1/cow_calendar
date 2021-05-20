@@ -73,6 +73,7 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
         when (x){
           0 -> toast("Please Select an Event")
           1 -> presenter.doAddCalveEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
+          2 -> presenter.doAddScanEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
           3 -> presenter.doAddServeEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
           4 -> presenter.doAddDryOffEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
         }

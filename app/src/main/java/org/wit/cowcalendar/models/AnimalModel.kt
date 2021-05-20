@@ -9,6 +9,9 @@ data class AnimalModel(
     var animalNumber: Int  = 0,
     var animalSex: Int = 0,
     var animalDob: String = "",
-    var lastEventType: String =""
+    var lastEventType: String ="",
+    var isPregnant: Boolean = false,
+    var okToServe: Boolean = false,
+    var treatmentRequired: Boolean = false
 ): Parcelable
 
