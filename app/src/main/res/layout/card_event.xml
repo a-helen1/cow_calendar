@@ -35,5 +35,13 @@
             android:layout_toEndOf="@id/eventType"
             android:textSize="15sp" />
 
+        <TextView
+            android:id="@+id/eventPregnantState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/eventDate"
+            android:layout_alignRight="@id/eventDate"
+            android:textSize="15sp"/>
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

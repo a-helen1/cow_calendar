@@ -35,11 +35,11 @@ class AnimalEventPresenter (val view: AnimalEventView) {
         animalEvents.add(item)
       }
     }
+    //show events by most recent first
     animalEvents.sortWith(compareByDescending { SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH).parse(it.eventDate) })
   }
 
   fun doAddServeEvent(eventDate: String, eventType: String) {
-
     event.eventDate = eventDate
     event.eventType = eventType
     event.animalId = animal.animalNumber
@@ -55,7 +55,6 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     view.startActivityForResult(view.intentFor<AddCalveView>()
       .putExtra("event_info", event)
       .putExtra("animal", animal), 0)
-
   }
 
   fun doAddDryOffEvent(eventDate: String, eventType: String){
@@ -77,6 +76,5 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     view.startActivityForResult(view.intentFor<AddScanView>()
       .putExtra("event_info", event)
       .putExtra("animal", animal), 0)
-
   }
 }

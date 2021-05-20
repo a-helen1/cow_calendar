@@ -27,11 +27,8 @@ var animalId = 0
 class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
 
   lateinit var presenter: AnimalEventPresenter
-  //var animal = AnimalModel()
-  //var event =EventModel()
 
   var x = 0
-  //var animalId = 0
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -71,11 +68,37 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
         toast("Please Enter an Event Date")
       }else {
         when (x){
+
           0 -> toast("Please Select an Event")
-          1 -> presenter.doAddCalveEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
-          2 -> presenter.doAddScanEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
-          3 -> presenter.doAddServeEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
-          4 -> presenter.doAddDryOffEvent(eventDate.text.toString(), eventSpinner.selectedItem.toString())
+
+          1 -> if(presenter.animal.lastEventType == "Dry Off" && presenter.animal.isPregnant) {
+            presenter.doAddCalveEvent(
+              eventDate.text.toString(),
+              eventSpinner.selectedItem.toString()
+            )
+          }else {
+            toast("Please add a dry off event or animal may not be pregnant")
+          }
+
+          2 -> if(presenter.animal.lastEventType == "Serve" || presenter.animal.lastEventType == "Calve") {
+            presenter.doAddScanEvent(
+              eventDate.text.toString(),
+              eventSpinner.selectedItem.toString())
+          } else {
+            toast("Animal has not been served or has not recently calved"
+            )
+          }
+
+          3 -> if(presenter.animal.isPregnant || !presenter.animal.okToServe) {
+            toast("Animal is Pregnant or requires treatment")
+          }else{
+            presenter.doAddServeEvent(
+              eventDate.text.toString(),
+              eventSpinner.selectedItem.toString())
+          }
+
+          4 -> presenter.doAddDryOffEvent(eventDate.text.toString(),
+            eventSpinner.selectedItem.toString())
         }
       }
     }

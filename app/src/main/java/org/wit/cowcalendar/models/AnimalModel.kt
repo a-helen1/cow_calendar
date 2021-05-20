@@ -11,7 +11,7 @@ data class AnimalModel(
     var animalDob: String = "",
     var lastEventType: String ="",
     var isPregnant: Boolean = false,
-    var okToServe: Boolean = false,
+    var okToServe: Boolean = true,
     var treatmentRequired: Boolean = false
 ): Parcelable
 

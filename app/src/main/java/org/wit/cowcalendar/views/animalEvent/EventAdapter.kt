@@ -43,6 +43,11 @@ class EventAdapter constructor(
       itemView.eventType.text = event.eventType
       itemView.eventDate.text = event.eventDate
       itemView.eventSire.text = event.sire
+      if (event.isPregnant) {
+        itemView.eventPregnantState.text ="Pregnant"
+      } else {
+        itemView.eventPregnantState.text =" Not Pregnant"
+      }
       itemView.setOnClickListener { listener.onEventClick(event)}
     }
   }
