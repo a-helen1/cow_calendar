@@ -18,6 +18,7 @@
     <string name="btn_add_calve">Add Calve</string>
     <string name="btn_add_scan">Add Scan</string>
     <string name="btn_add_dryoff">Add Dry Off</string>
+    <string name="btn_update_animal">Update</string>
 
     <string name="pre_serve">Pre Serve</string>
     <string name="post_serve">Post Serve</string>

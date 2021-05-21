@@ -139,7 +139,7 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
         finish()
       }
       R.id.item_edit -> {
-        presenter.edit()
+        presenter.edit(presenter.animal)
       }
       R.id.item_cancel -> {
         finish()

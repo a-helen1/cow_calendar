@@ -5,6 +5,7 @@ import android.util.Log
 import org.jetbrains.anko.intentFor
 import org.wit.cowcalendar.views.addServe.AddServeView
 import org.wit.cowcalendar.activities.AnimalEventView
+import org.wit.cowcalendar.activities.AnimalView
 import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
@@ -48,7 +49,11 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     app.animals.delete(animal)
     }
 
-  fun edit(){  }
+  fun edit(animal: AnimalModel){
+    view.startActivityForResult(view.intentFor<AnimalView>()
+      //.putExtra("event_info", event)
+      .putExtra("animal_edit", animal), 0)
+  }
 
   fun doAddServeEvent(eventDate: String, eventType: String) {
     event.eventDate = eventDate

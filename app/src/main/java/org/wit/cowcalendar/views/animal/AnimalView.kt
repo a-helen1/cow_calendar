@@ -36,7 +36,8 @@ class AnimalView : BaseView(), AnkoLogger {
     setSupportActionBar(toolbarAdd)
     info("Animal Activity started..")
 
-    presenter = AnimalPresenter(this)
+    //presenter = AnimalPresenter(this)
+    presenter = initPresenter(AnimalPresenter(this)) as AnimalPresenter
 
     val radioGroup = findViewById<RadioGroup>(R.id.radioGroup) as RadioGroup
     radioGroup.setOnCheckedChangeListener { group, ID ->
@@ -61,7 +62,7 @@ class AnimalView : BaseView(), AnkoLogger {
   }
 
   override fun showAnimal(animal: AnimalModel) {
-    cowNo.setText(animal.animalNumber)
+    cowNo.setText(animal.animalNumber.toString())
     animalDob.setText(animal.animalDob)
     if (animal.animalSex == 1) {
       radioButtonMale.isChecked = true
