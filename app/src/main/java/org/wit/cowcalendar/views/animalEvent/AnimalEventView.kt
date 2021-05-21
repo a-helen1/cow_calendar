@@ -11,7 +11,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_animal.toolbarAdd
 import kotlinx.android.synthetic.main.activity_animal_events.*
-import kotlinx.android.synthetic.main.activity_animal_list.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 import org.wit.cowcalendar.R
@@ -19,6 +18,8 @@ import org.wit.cowcalendar.main.MainApp
 import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
 import org.wit.cowcalendar.views.animalEvent.AnimalEventPresenter
+import org.wit.cowcalendar.views.animalEvent.EventAdapter
+import org.wit.cowcalendar.views.animalEvent.EventListener
 import java.text.DateFormat
 import java.util.*
 

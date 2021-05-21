@@ -1,15 +1,12 @@
-package org.wit.cowcalendar.activities
+package org.wit.cowcalendar.views.animalEvent
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.card_animal.view.*
 import kotlinx.android.synthetic.main.card_event.view.*
 import org.wit.cowcalendar.R
-import org.wit.cowcalendar.models.AnimalModel
 import org.wit.cowcalendar.models.EventModel
-import java.util.*
 
 interface EventListener{
   fun onEventClick(event: EventModel)
