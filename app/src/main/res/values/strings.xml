@@ -30,6 +30,7 @@
     <string name="menu_add_animal">Add</string>
     <string name="menu_cancel_animal">Cancel</string>
     <string name="menu_delete_animal">Delete</string>
+    <string name="menu_edit_animal">Edit Animal</string>
     <string name="menu_logout">Logout</string>
 
     <string-array name="Events">

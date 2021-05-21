@@ -4,6 +4,8 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -123,6 +125,28 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
   }
 
   override fun onEventClick(event: EventModel) {}
+
+  override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    menuInflater.inflate(R.menu.menu_animal, menu)
+    //if (presenter.edit) menu.getItem(0).setVisible(true)
+    return super.onCreateOptionsMenu(menu)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    when (item?.itemId) {
+      R.id.item_delete -> {
+        presenter.doDelete(presenter.animal)
+        finish()
+      }
+      R.id.item_edit -> {
+        presenter.edit()
+      }
+      R.id.item_cancel -> {
+        finish()
+      }
+    }
+    return super.onOptionsItemSelected(item)
+  }
 
   fun showDatePickerDialog(v: View) {
     val newFragment = EventDatePickerFragment()

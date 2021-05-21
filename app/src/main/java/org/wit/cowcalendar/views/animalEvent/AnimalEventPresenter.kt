@@ -1,3 +1,4 @@
+
 package org.wit.cowcalendar.views.animalEvent
 
 import android.util.Log
@@ -38,6 +39,16 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     //show events by most recent first
     animalEvents.sortWith(compareByDescending { SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH).parse(it.eventDate) })
   }
+
+  fun doDelete(animal: AnimalModel){
+    getEvents()
+    for (item in animalEvents) {
+      app.events.delete(item)
+      }
+    app.animals.delete(animal)
+    }
+
+  fun edit(){  }
 
   fun doAddServeEvent(eventDate: String, eventType: String) {
     event.eventDate = eventDate

@@ -56,7 +56,6 @@ class AnimalView : BaseView(), AnkoLogger {
       } else {
         presenter.doAddorSave(cowNo.text.toString(), animalSex ,animalDob.text.toString())
       }
-      info("add button pressed: ${animal}")
       setResult(AppCompatActivity.RESULT_OK)
     }
   }
