@@ -67,7 +67,6 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     view.startActivityForResult(view.intentFor<EventView>()
       .putExtra("event_edit", event)
       .putExtra("event_animal", animal), 0)
-
   }
 
   fun doAddServeEvent(eventDate: String, eventType: String) {

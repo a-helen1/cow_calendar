@@ -19,7 +19,6 @@ class AnimalListPresenter (view: BaseView) : BasePresenter(view) {
   }
 
   fun doEditAnimal(animal: AnimalModel) {
-    view?.navigateTo(VIEW.ANIMAL, 0, "animal_edit", animal)
   }
 
   fun doShowAnimalEvents(animal: AnimalModel) {

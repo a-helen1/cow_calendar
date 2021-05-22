@@ -47,8 +47,6 @@ class AnimalListView : BaseView(), AnimalListener {
 
   override fun onAnimalClick(animal: AnimalModel) {
     presenter.doShowAnimalEvents(animal)
-    //startActivityForResult(intentFor<AnimalActivity>().putExtra("animal_edit", animal), 0)
-    //startActivityForResult(intentFor<AnimalEventActivity>().putExtra("animal_event", animal), 0)
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
