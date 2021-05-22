@@ -37,7 +37,7 @@ class EventAdapter constructor(
   class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(event: EventModel, listener: EventListener){
-      itemView.eventType.text = event.eventType
+      itemView.typeOfEvent.text = event.eventType
       itemView.eventDate.text = event.eventDate
       itemView.eventSire.text = event.sire
       if (event.isPregnant) {

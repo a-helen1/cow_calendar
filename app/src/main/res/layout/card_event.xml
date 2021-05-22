@@ -12,7 +12,7 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/eventType"
+            android:id="@+id/typeOfEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -22,7 +22,7 @@
             android:id="@+id/eventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/eventType"
+            android:layout_below="@id/typeOfEvent"
             android:textSize="15sp"/>
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="91dp"
             android:layout_marginTop="22dp"
-            android:layout_toEndOf="@id/eventType"
+            android:layout_toEndOf="@id/typeOfEvent"
             android:textSize="15sp" />
 
         <TextView

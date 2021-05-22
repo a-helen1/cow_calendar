@@ -42,6 +42,9 @@
         <activity android:name="org.wit.cowcalendar.views.addScan.AddScanView">
         </activity>
 
+        <activity android:name="org.wit.cowcalendar.views.event.EventView">
+        </activity>
+
     </application>
 
 </manifest>

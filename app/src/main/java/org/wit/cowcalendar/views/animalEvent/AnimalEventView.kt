@@ -121,10 +121,11 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
     eventRecyclerView.layoutManager = eventLayoutManager
     eventRecyclerView.adapter = EventAdapter(events,this)
     eventRecyclerView.adapter?.notifyDataSetChanged()
-
   }
 
-  override fun onEventClick(event: EventModel) {}
+  override fun onEventClick(event: EventModel) {
+    presenter.doShowEvent(event)
+  }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
     menuInflater.inflate(R.menu.menu_animal, menu)
@@ -155,6 +156,7 @@ class AnimalEventView : AppCompatActivity(), AnkoLogger, EventListener {
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    presenter.getUpdatedAnimal()
     presenter.getEvents()
     showEvents(presenter.animal, presenter.animalEvents)
     super.onActivityResult(requestCode, resultCode, data)

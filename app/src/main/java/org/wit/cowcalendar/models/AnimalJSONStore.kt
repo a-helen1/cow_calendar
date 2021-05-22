@@ -35,9 +35,9 @@
             return animals
         }
 
-        fun findById(animalNo: Int): AnimalModel? {
-            return animals.find { it.animalNumber == animalNo}
-
+        override fun findById(animalNo: Int): AnimalModel? {
+            val foundAnimal: AnimalModel? = animals.find { it.animalNumber == animalNo}
+            return foundAnimal
         }
 
         override fun create(animal: AnimalModel) {
@@ -54,6 +54,9 @@
                 foundAnimal.animalSex = animal.animalSex
                 foundAnimal.animalDob = animal.animalDob
                 foundAnimal.lastEventType = animal.lastEventType
+                foundAnimal.isPregnant = animal.isPregnant
+                foundAnimal.okToServe = animal.okToServe
+                foundAnimal.treatmentRequired = animal.treatmentRequired
             }
             serialise()
         }

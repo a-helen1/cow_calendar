@@ -34,7 +34,6 @@ class AnimalView : BaseView(), AnkoLogger {
     setContentView(R.layout.activity_animal)
     toolbarAdd.title = title
     setSupportActionBar(toolbarAdd)
-    info("Animal Activity started..")
 
     //presenter = AnimalPresenter(this)
     presenter = initPresenter(AnimalPresenter(this)) as AnimalPresenter

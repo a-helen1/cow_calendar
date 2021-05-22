@@ -10,6 +10,12 @@
     <string name="date">Date</string>
     <string name="animal_sex">Animal Sex</string>
     <string name="event_date">Event Date</string>
+    <string name="calving_date">Calving Date</string>
+    <string name="event_type">Event Type</string>
+    <string name="serve_number">Serve Number</string>
+    <string name="calf_sex">Calf Sex</string>
+    <string name="dry_off_date">Dry Off Date</string>
+    <string name="pregnant_state">Pregnant State</string>
 
     <string name="btn_dry_off">Dry Off</string>
     <string name="btn_add_Serve">Add Service</string>

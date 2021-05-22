@@ -21,11 +21,18 @@ class AddScanPresenter (val view: AddScanView) {
   fun doAddScan(eventType: String, okToServe: Boolean, treatmentRequired: Boolean, isPregnant: Boolean) {
     animal.lastEventType = eventType
     event.eventType = eventType
-    animal.isPregnant = isPregnant
-    event.treatmentRequired = treatmentRequired
-    event.okToServe = okToServe
-    animal.okToServe = okToServe
-    animal.treatmentRequired = treatmentRequired
+    if (isPregnant) {
+      animal.isPregnant = true
+      event.isPregnant = true
+    }
+    if (okToServe) {
+      event.okToServe = true
+      animal.okToServe = true
+    }
+    if (treatmentRequired) {
+      animal.treatmentRequired = true
+      animal.treatmentRequired = true
+    }
     app.animals.update(animal)
     app.events.create(event)
     view.finish()
