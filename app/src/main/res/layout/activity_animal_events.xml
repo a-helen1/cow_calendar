@@ -111,8 +111,8 @@
             android:focusableInTouchMode="false"
             android:hint="@string/event_date"
             android:inputType="date"
-            android:textSize="20dp"
             android:onClick="showDatePickerDialog"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/eventSpinner" />
 

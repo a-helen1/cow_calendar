@@ -12,6 +12,8 @@ import org.wit.cowcalendar.views.VIEW
 
 class AnimalListPresenter (view: BaseView) : BasePresenter(view) {
 
+
+
   fun getAnimals() = app.animals.findAll()
 
   fun doAddAnimal() {
@@ -28,5 +30,7 @@ class AnimalListPresenter (view: BaseView) : BasePresenter(view) {
   fun doLogout(){
     view?.navigateTo(VIEW.LOGIN)
   }
+
+
 }
 

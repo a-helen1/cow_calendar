@@ -25,6 +25,7 @@
     <string name="btn_add_scan">Add Scan</string>
     <string name="btn_add_dryoff">Add Dry Off</string>
     <string name="btn_update_animal">Update</string>
+    <string name="btn_filter_animal">Filter</string>
 
     <string name="pre_serve">Pre Serve</string>
     <string name="post_serve">Post Serve</string>
@@ -47,6 +48,13 @@
         <item>Scan</item>
         <item>Serve</item>
         <item>Dry Off</item>
+    </string-array>
+
+    <string-array name="Animal_Filters">
+        <item>Show All</item>
+        <item>Due Calve</item>
+        <item>Due Serve</item>
+        <item>Due Scan</item>
     </string-array>
 
 </resources>
