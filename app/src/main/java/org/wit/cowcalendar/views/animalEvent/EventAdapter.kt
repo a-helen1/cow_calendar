@@ -39,12 +39,6 @@ class EventAdapter constructor(
     fun bind(event: EventModel, listener: EventListener){
       itemView.typeOfEvent.text = event.eventType
       itemView.eventDate.text = event.eventDate
-      itemView.eventSire.text = event.sire
-      if (event.isPregnant) {
-        itemView.eventPregnantState.text ="Pregnant"
-      } else {
-        itemView.eventPregnantState.text =" Not Pregnant"
-      }
       itemView.setOnClickListener { listener.onEventClick(event)}
     }
   }

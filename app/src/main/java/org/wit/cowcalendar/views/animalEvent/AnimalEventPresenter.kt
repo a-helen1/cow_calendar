@@ -25,7 +25,6 @@ class AnimalEventPresenter (val view: AnimalEventView) {
     app = view.application as MainApp
     animal = view.intent.extras?.getParcelable<AnimalModel>("animal_event")!!
     getEvents()
-    Log.d("HasRun", "init")
     view.showEvents(animal, animalEvents)
   }
 

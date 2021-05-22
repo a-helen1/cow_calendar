@@ -24,24 +24,5 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/typeOfEvent"
             android:textSize="15sp"/>
-
-        <TextView
-            android:id="@+id/eventSire"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="91dp"
-            android:layout_marginTop="22dp"
-            android:layout_toEndOf="@id/typeOfEvent"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/eventPregnantState"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/eventDate"
-            android:layout_alignRight="@id/eventDate"
-            android:textSize="15sp"/>
-
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

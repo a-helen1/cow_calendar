@@ -57,6 +57,7 @@
                 foundAnimal.isPregnant = animal.isPregnant
                 foundAnimal.okToServe = animal.okToServe
                 foundAnimal.treatmentRequired = animal.treatmentRequired
+                foundAnimal.lastCalveDate = animal.lastCalveDate
             }
             serialise()
         }

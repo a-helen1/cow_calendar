@@ -2,6 +2,8 @@ package org.wit.cowcalendar.views.event
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.Menu
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_event_view.*
 import org.jetbrains.anko.AnkoLogger
 import org.wit.cowcalendar.R
@@ -20,8 +22,9 @@ class EventView: BaseView(), AnkoLogger{
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_event_view)
-    toolbarAdd.title = title
-    setSupportActionBar(toolbarAdd)
+
+    toolbarEvent.title = title
+    setSupportActionBar(toolbarEvent)
 
     presenter = initPresenter(EventPresenter(this)) as EventPresenter
   }
@@ -62,4 +65,24 @@ class EventView: BaseView(), AnkoLogger{
       pregnantState.text = "Not Pregnant"
     }
   }
+
+  override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    menuInflater.inflate(R.menu.menu_event, menu)
+    //if (presenter.edit) menu.getItem(0).setVisible(true)
+    return super.onCreateOptionsMenu(menu)
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    when (item?.itemId) {
+      R.id.item_delete -> {
+        presenter.doDelete()
+        finish()
+      }
+      R.id.item_cancel -> {
+        finish()
+      }
+    }
+    return super.onOptionsItemSelected(item)
+  }
+
 }

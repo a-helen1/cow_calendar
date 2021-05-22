@@ -21,7 +21,9 @@ class AddCalvePresenter (val view: AddCalveView) {
     event.calveDate = event.eventDate
     event.calveSex = calveSex
     animal.lastEventType = event.eventType
+    animal.lastCalveDate = event.eventDate
     animal.isPregnant = false
+    animal.okToServe = true
     app.animals.update(animal)
     app.events.create(event)
     view.finish()

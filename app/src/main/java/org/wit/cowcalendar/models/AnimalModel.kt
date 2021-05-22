@@ -10,6 +10,7 @@ data class AnimalModel(
     var animalSex: Int = 0,
     var animalDob: String = "",
     var lastEventType: String ="",
+    var lastCalveDate: String ="",
     var isPregnant: Boolean = false,
     var okToServe: Boolean = true,
     var treatmentRequired: Boolean = false
