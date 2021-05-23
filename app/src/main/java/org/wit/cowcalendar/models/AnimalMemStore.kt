@@ -36,6 +36,10 @@ class AnimalMemStore : AnimalStore, AnkoLogger {
         animals.remove(animal)
     }
 
+    override fun findById(id: Int): AnimalModel? {
+        TODO("Not yet implemented")
+    }
+
     fun logAll() {
         animals.forEach{ info("${it}")}
     }

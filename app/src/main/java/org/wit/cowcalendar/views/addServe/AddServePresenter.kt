@@ -20,6 +20,10 @@ class AddServePresenter (val view: AddServeView) {
   fun doAddServe(sire: String) {
     event.sire = sire
     event.serveNo += 1
+    animal.lastEventType = event.eventType
+    animal.okToServe = false
+    event.okToServe = false
+    app.animals.update(animal)
     app.events.create(event)
     view.finish()
   }

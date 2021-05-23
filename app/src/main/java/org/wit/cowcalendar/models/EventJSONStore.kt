@@ -41,16 +41,6 @@ class EventJSONStore : EventStore, AnkoLogger {
   }
 
   override fun update(event: EventModel) {
-    /*
-    val eventsList = findAll() as ArrayList<EventModel>
-    var foundEvent: EventModel? = eventsList.find { p -> p.id == event.id }
-    if (foundEvent != null ) {
-      foundAnimal.animalNumber = animal.animalNumber
-      foundAnimal.animalSex = animal.animalSex
-      foundAnimal.animalDob = animal.animalDob
-    }
-    serialise()
-    */
   }
 
   override fun delete(event: EventModel) {

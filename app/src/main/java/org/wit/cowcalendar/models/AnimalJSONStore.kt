@@ -31,7 +31,13 @@
         }
 
         override fun findAll(): MutableList<AnimalModel> {
+            animals.sortWith(compareBy { it.animalNumber.toInt() })
             return animals
+        }
+
+        override fun findById(animalNo: Int): AnimalModel? {
+            val foundAnimal: AnimalModel? = animals.find { it.animalNumber == animalNo}
+            return foundAnimal
         }
 
         override fun create(animal: AnimalModel) {
@@ -47,6 +53,11 @@
                 foundAnimal.animalNumber = animal.animalNumber
                 foundAnimal.animalSex = animal.animalSex
                 foundAnimal.animalDob = animal.animalDob
+                foundAnimal.lastEventType = animal.lastEventType
+                foundAnimal.isPregnant = animal.isPregnant
+                foundAnimal.okToServe = animal.okToServe
+                foundAnimal.treatmentRequired = animal.treatmentRequired
+                foundAnimal.lastCalveDate = animal.lastCalveDate
             }
             serialise()
         }

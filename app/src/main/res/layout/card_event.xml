@@ -12,7 +12,7 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/eventType"
+            android:id="@+id/typeOfEvent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -22,16 +22,7 @@
             android:id="@+id/eventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/eventType"
+            android:layout_below="@id/typeOfEvent"
             android:textSize="15sp"/>
-
-        <TextView
-            android:id="@+id/eventSire"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@id/eventType"
-            android:textSize="15sp"/>
-
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

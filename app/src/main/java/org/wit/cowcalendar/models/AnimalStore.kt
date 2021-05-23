@@ -5,4 +5,5 @@ interface AnimalStore {
     fun create(animal: AnimalModel)
     fun update(animal: AnimalModel)
     fun delete(animal: AnimalModel)
+    fun findById(id: Int): AnimalModel?
 }

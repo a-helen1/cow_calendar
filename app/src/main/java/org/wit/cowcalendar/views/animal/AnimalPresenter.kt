@@ -21,7 +21,7 @@ class AnimalPresenter (view: BaseView) : BasePresenter(view) {
   }
 
   fun doAddorSave(animalNo: String, animalSex: Int, animalDob: String ) {
-    animal.animalNumber = animalNo
+    animal.animalNumber = animalNo.toInt()
     animal.animalSex = animalSex
     animal.animalDob = animalDob
     if (edit) {

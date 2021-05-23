@@ -10,32 +10,51 @@
     <string name="date">Date</string>
     <string name="animal_sex">Animal Sex</string>
     <string name="event_date">Event Date</string>
+    <string name="calving_date">Calving Date</string>
+    <string name="event_type">Event Type</string>
+    <string name="serve_number">Serve Number</string>
+    <string name="calf_sex">Calf Sex</string>
+    <string name="dry_off_date">Dry Off Date</string>
+    <string name="pregnant_state">Pregnant State</string>
 
     <string name="btn_dry_off">Dry Off</string>
     <string name="btn_add_Serve">Add Service</string>
-    <string name="btn_add_Scan">Add Scan</string>
     <string name="btn_set_date">Set Date</string>
     <string name="btn_add_event">Add Event</string>
     <string name="btn_add_calve">Add Calve</string>
+    <string name="btn_add_scan">Add Scan</string>
+    <string name="btn_add_dryoff">Add Dry Off</string>
+    <string name="btn_update_animal">Update</string>
+    <string name="btn_filter_animal">Filter</string>
 
     <string name="pre_serve">Pre Serve</string>
     <string name="post_serve">Post Serve</string>
     <string name="ok_to_serv">Ok To Serve</string>
     <string name="treatment_required">Treatment Required</string>
+    <string name="pregnant">Pregnant</string>
+    <string name="not_pregnant">Not Prengnant</string>
     <string name="save_animal">Save Animal</string>
 
     <string name="menu_add_animal">Add</string>
     <string name="menu_cancel_animal">Cancel</string>
-    <string name="menu_delete_animal">Delete</string>
+    <string name="menu_delete_animal">Delete Animal</string>
+    <string name="menu_edit_animal">Edit Animal</string>
+    <string name="menu_delete_event">Delete Event</string>
     <string name="menu_logout">Logout</string>
 
     <string-array name="Events">
         <item>Select event</item>
         <item>Calve</item>
-        <item>Post Calve Scan</item>
+        <item>Scan</item>
         <item>Serve</item>
-        <item>Pregnancy Check</item>
         <item>Dry Off</item>
+    </string-array>
+
+    <string-array name="Animal_Filters">
+        <item>Show All</item>
+        <item>Due Calve</item>
+        <item>Due Serve</item>
+        <item>Due Scan</item>
     </string-array>
 
 </resources>
